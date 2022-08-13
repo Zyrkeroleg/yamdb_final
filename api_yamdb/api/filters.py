@@ -7,7 +7,8 @@ class TitleFilter(django_filters.FilterSet):
 
     genre = django_filters.ModelMultipleChoiceFilter(
         queryset=Genres.objects.all(),
-        field_name="genre__slug", to_field_name="slug"
+        field_name="genre__slug",
+        to_field_name="slug"
     )
     category = django_filters.ModelMultipleChoiceFilter(
         queryset=Categories.objects.all(),
@@ -15,8 +16,7 @@ class TitleFilter(django_filters.FilterSet):
         to_field_name="slug",
     )
     name = django_filters.CharFilter(
-        field_name="name",
-        lookup_expr="icontains")
+        field_name="name", lookup_expr="icontains")
 
     class Meta:
         model = Title

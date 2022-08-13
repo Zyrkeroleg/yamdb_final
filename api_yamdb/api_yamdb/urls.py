@@ -8,11 +8,10 @@ from django.urls import re_path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(
-        "redoc/",
-        TemplateView.as_view(template_name="redoc.html"),
-        name="redoc"),
-    path("api/", include("api.urls")), ]
+    path("redoc/", TemplateView.as_view(
+        template_name="redoc.html"), name="redoc"),
+    path("api/", include("api.urls")),
+]
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -39,7 +38,7 @@ urlpatterns += [
         name="schema-swagger-ui",
     ),
     re_path(
-        r"^redoc/$",
-        schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+        r"^redoc/$", schema_view.with_ui(
+            "redoc", cache_timeout=0), name="schema-redoc"
     ),
 ]

@@ -59,7 +59,8 @@ class Review(models.Model):
     text = models.TextField()
     pub_date = models.DateTimeField("Дата публикации", auto_now_add=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="reviews")
+        User, on_delete=models.CASCADE, related_name="reviews"
+    )
     title = models.ForeignKey(
         Title, on_delete=models.CASCADE, related_name="reviews")
     score = models.IntegerField(max_length=2, choices=SCORE_CHOICES, default=1)
@@ -67,7 +68,9 @@ class Review(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["author", "title"], name="unique_review")]
+                fields=["author", "title"], name="unique_review"
+            )
+        ]
         ordering = ["-pub_date"]
 
     def __str__(self):
@@ -83,4 +86,5 @@ class Comment(models.Model):
     )
     text = models.TextField()
     pub_date = models.DateTimeField(
-        "Дата добавления", auto_now_add=True, db_index=True)
+        "Дата добавления", auto_now_add=True, db_index=True
+    )

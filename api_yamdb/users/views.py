@@ -8,7 +8,6 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
-
 from users.models import User
 
 from .permissions import AdminOnlyPermission
@@ -80,8 +79,7 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer.save()
 
     @action(
-        detail=False,
-        methods=["get", "patch"],
+        detail=False, methods=["get", "patch"],
         permission_classes=[IsAuthenticated]
     )
     def me(self, request):
@@ -91,8 +89,7 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         if request.method == "PATCH":
             serializer = UserSerializerOrReadOnly(
-                user, data=request.data,
-                partial=True)
+                user, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

@@ -14,8 +14,9 @@ class UserSerializerOrReadOnly(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.Serializer):
     email = serializers.EmailField(
-        required=True,
-        validators=[UniqueValidator(queryset=User.objects.all())]
+        required=True, validators=[UniqueValidator(
+            queryset=User.objects.all()
+        )]
     )
     username = serializers.CharField(
         validators=[UniqueValidator(queryset=User.objects.all())],
