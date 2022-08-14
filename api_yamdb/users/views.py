@@ -72,7 +72,7 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response(
                 "Email уже зарегестрирован", status=status.HTTP_400_BAD_REQUEST
             )
-        serializer.save()
+        return serializer.save()
 
     @action(
         detail=False, methods=["get", "patch"],
@@ -83,7 +83,7 @@ class UserViewSet(viewsets.ModelViewSet):
         if request.method == "GET":
             serializer = UserSerializer(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
-        if request.method == "PATCH":
+        else:
             serializer = UserSerializerOrReadOnly(
                 user, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
