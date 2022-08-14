@@ -1,7 +1,6 @@
-from rest_framework.validators import UniqueValidator
-from rest_framework.validators import UniqueTogetherValidator
-from users.models import User
 from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator, UniqueValidator
+from users.models import User
 
 
 class UserSerializerOrReadOnly(serializers.ModelSerializer):

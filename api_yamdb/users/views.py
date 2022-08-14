@@ -11,12 +11,8 @@ from rest_framework_simplejwt.tokens import AccessToken
 from users.models import User
 
 from .permissions import AdminOnlyPermission
-from .serializers import (
-    RegisterSerializer,
-    TokenSerializer,
-    UserSerializer,
-    UserSerializerOrReadOnly,
-)
+from .serializers import (RegisterSerializer, TokenSerializer, UserSerializer,
+                          UserSerializerOrReadOnly)
 
 
 @api_view(["POST"])

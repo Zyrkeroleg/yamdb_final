@@ -3,13 +3,8 @@ from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 from users.views import UserViewSet, get_jwt_token, sending_mail
 
-from .views import (
-    CategoryViewSet,
-    CommentViewSet,
-    GenreViewSet,
-    ReviewViewSet,
-    TitleViewSet,
-)
+from .views import (CategoryViewSet, CommentViewSet, GenreViewSet,
+                    ReviewViewSet, TitleViewSet)
 
 router_v1 = SimpleRouter()
 router_v1.register(r"categories", CategoryViewSet, basename="categories")
